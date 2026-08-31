@@ -3,14 +3,15 @@ import pygame
 WIDTH, HEIGHT = 1080, 720
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Galaxy Fighters")
-BG = pygame.image.load("Assets/space.png",)
+BG = pygame.transform.scale(pygame.image.load("Assets/space.png"), (WIDTH, HEIGHT))
 RED = (255,0,0)
 BLUE =(0,255,0)
 GREEN =(0,0,255)
 FPS = 60
 
 def draw():
-    WIN.fill(GREEN)
+    # WIN.fill(GREEN)
+    WIN.blit(BG,(0,0))
     pygame.display.update()
 
 def main():
