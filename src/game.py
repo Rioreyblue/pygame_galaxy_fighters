@@ -24,6 +24,27 @@ def draw(yellow_player, red_player):
     WIN.blit(RED_SPACESHIP,(red_player.x, red_player.y))
     WIN.blit(YELLOW_SPACESHIP,(yellow_player.x, yellow_player.y))
     pygame.display.update()
+    
+def red_handle_movements(keys_presed, red_player):
+        if keys_presed[pygame.K_a] and red_player.x - PLAYER_VEL >=0:
+            red_player.x -= PLAYER_VEL
+        if keys_presed[pygame.K_d] and red_player.x + PLAYER_VEL + SPACE_SHIP_WIDTH <= WIDTH/2:
+            red_player.x += PLAYER_VEL
+        if keys_presed[pygame.K_w] and red_player.y - PLAYER_VEL >=0:
+            red_player.y -= PLAYER_VEL
+        if keys_presed[pygame.K_s] and red_player.y + PLAYER_VEL + SPACE_SHIP_HEIGHT <= HEIGHT-20:
+            red_player.y += PLAYER_VEL
+            
+def yellow_handle_movements(keys_presed, yellow_player):
+        if keys_presed[pygame.K_LEFT] and yellow_player.x - PLAYER_VEL >= WIDTH/2:
+            yellow_player.x -= PLAYER_VEL
+        if keys_presed[pygame.K_RIGHT] and yellow_player.x + PLAYER_VEL + SPACE_SHIP_WIDTH <= WIDTH:
+            yellow_player.x += PLAYER_VEL
+        if keys_presed[pygame.K_UP] and yellow_player.y - PLAYER_VEL >=0:
+            yellow_player.y -= PLAYER_VEL
+        if keys_presed[pygame.K_DOWN] and yellow_player.y + PLAYER_VEL + SPACE_SHIP_HEIGHT <= HEIGHT-20:
+            yellow_player.y += PLAYER_VEL
+    
 
 def run_game():
     red_player = pygame.Rect(10, HEIGHT/2, SPACE_SHIP_WIDTH, SPACE_SHIP_HEIGHT)
@@ -38,25 +59,9 @@ def run_game():
                 run = False
 
         keys_presed = pygame.key.get_pressed()
-        if keys_presed[pygame.K_a] and red_player.x - PLAYER_VEL >=0:
-            red_player.x -= PLAYER_VEL
-        if keys_presed[pygame.K_d] and red_player.x + PLAYER_VEL + SPACE_SHIP_WIDTH <= WIDTH/2:
-            red_player.x += PLAYER_VEL
-        if keys_presed[pygame.K_w] and red_player.y - PLAYER_VEL >=0:
-            red_player.y -= PLAYER_VEL
-        if keys_presed[pygame.K_s] and red_player.y + PLAYER_VEL + SPACE_SHIP_HEIGHT <= HEIGHT-20:
-            red_player.y += PLAYER_VEL
-            
-        if keys_presed[pygame.K_LEFT] and yellow_player.x - PLAYER_VEL >= WIDTH/2:
-            yellow_player.x -= PLAYER_VEL
-        if keys_presed[pygame.K_RIGHT] and yellow_player.x + PLAYER_VEL + SPACE_SHIP_WIDTH <= WIDTH:
-            yellow_player.x += PLAYER_VEL
-        if keys_presed[pygame.K_UP] and yellow_player.y - PLAYER_VEL >=0:
-            yellow_player.y -= PLAYER_VEL
-        if keys_presed[pygame.K_DOWN] and yellow_player.y + PLAYER_VEL + SPACE_SHIP_HEIGHT <= HEIGHT-20:
-            yellow_player.y += PLAYER_VEL
-        
-                
+        red_handle_movements(keys_presed, red_player)
+        yellow_handle_movements(keys_presed, yellow_player)
+              
         draw(yellow_player, red_player)
                 
                 
