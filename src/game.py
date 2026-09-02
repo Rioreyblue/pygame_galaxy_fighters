@@ -51,10 +51,10 @@ def run_game():
             yellow_player.x -= PLAYER_VEL
         if keys_presed[pygame.K_RIGHT] and yellow_player.x + PLAYER_VEL + SPACE_SHIP_WIDTH <= WIDTH:
             yellow_player.x += PLAYER_VEL
-        if keys_presed[pygame.K_UP]:
+        if keys_presed[pygame.K_UP] and yellow_player.y - PLAYER_VEL >=0:
             yellow_player.y -= PLAYER_VEL
-        if keys_presed[pygame.K_UP]:
-            yellow_player.y -= PLAYER_VEL
+        if keys_presed[pygame.K_DOWN] and yellow_player.y + PLAYER_VEL + SPACE_SHIP_HEIGHT <= HEIGHT-20:
+            yellow_player.y += PLAYER_VEL
         
                 
         draw(yellow_player, red_player)
