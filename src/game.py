@@ -11,7 +11,7 @@ BLUE =(0,255,0)
 GREEN =(0,0,255)
 BLACK = (0,0,0)
 #game border
-BORDER = pygame.Rect(WIDTH/2 -27, 0, 5, HEIGHT)
+BORDER = pygame.Rect(WIDTH/2 - 12, 0, 5, HEIGHT)
 #game fps
 FPS = 60
 #player variables
