@@ -11,7 +11,7 @@ BLUE =(0,255,0)
 GREEN =(0,0,255)
 BLACK = (0,0,0)
 #game border
-BORDER = pygame.Rect(x, WIDTH/2, 5, HEIGHT)
+BORDER = pygame.Rect(WIDTH/2 -27, 0, 5, HEIGHT)
 #game fps
 FPS = 60
 #player variables
@@ -26,6 +26,8 @@ def draw(yellow_player, red_player):
     WIN.blit(BG,(0,0))
     WIN.blit(RED_SPACESHIP,(red_player.x, red_player.y))
     WIN.blit(YELLOW_SPACESHIP,(yellow_player.x, yellow_player.y))
+    #border
+    pygame.draw.rect(WIN, BLACK, BORDER)
     pygame.display.update()
     
 def red_handle_movements(keys_presed, red_player):
