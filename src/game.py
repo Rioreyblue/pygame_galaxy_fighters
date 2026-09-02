@@ -9,6 +9,9 @@ SPACE_SHIP_WIDTH, SPACE_SHIP_HEIGHT = 60, 40
 RED = (255,0,0)
 BLUE =(0,255,0)
 GREEN =(0,0,255)
+BLACK = (0,0,0)
+#game border
+BORDER = pygame.Rect(x, WIDTH/2, 5, HEIGHT)
 #game fps
 FPS = 60
 #player variables
