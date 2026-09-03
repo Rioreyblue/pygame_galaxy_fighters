@@ -67,7 +67,13 @@ def run_game():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-            
+                
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LCTRL:
+                    ...
+                    
+                if event.key == pygame.K_RCTRL:
+                    ...
 
         keys_presed = pygame.key.get_pressed()
         red_handle_movements(keys_presed, red_player)
