@@ -70,7 +70,8 @@ def run_game():
                 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LCTRL:
-                    ...
+                    bullet = pygame.Rect(red_player.x + red_player.width, red_player.y + red_player.height/2 -2, 10, 5)
+                    red_bullets.append(bullet)
                     
                 if event.key == pygame.K_RCTRL:
                     ...
