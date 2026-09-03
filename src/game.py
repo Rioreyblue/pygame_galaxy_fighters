@@ -18,6 +18,8 @@ FPS = 60
 RED_SPACESHIP_IMAGE = pygame.image.load("Assets/spaceship_red.png")
 RED_SPACESHIP = pygame.transform.rotate(pygame.transform.scale(RED_SPACESHIP_IMAGE, (SPACE_SHIP_WIDTH, SPACE_SHIP_HEIGHT)), 90)
 PLAYER_VEL = 5
+#BULLETS 
+BULLETS_VEL = 10
 
 YELLOW_SPACESHIP_IMAGE = pygame.image.load("Assets/spaceship_yellow.png")
 YELLOW_SPACESHIP = pygame.transform.rotate(pygame.transform.scale(YELLOW_SPACESHIP_IMAGE, (SPACE_SHIP_WIDTH, SPACE_SHIP_HEIGHT)), 270)
@@ -55,6 +57,8 @@ def run_game():
     red_player = pygame.Rect(10, HEIGHT/2, SPACE_SHIP_WIDTH, SPACE_SHIP_HEIGHT)
     yellow_player = pygame.Rect(1020, HEIGHT/2, SPACE_SHIP_WIDTH, SPACE_SHIP_HEIGHT)
     
+    bullets = []
+    
     fps_clock = pygame.time.Clock()
     run = True
     while run:
@@ -62,6 +66,7 @@ def run_game():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+            
 
         keys_presed = pygame.key.get_pressed()
         red_handle_movements(keys_presed, red_player)
