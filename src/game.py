@@ -57,7 +57,8 @@ def run_game():
     red_player = pygame.Rect(10, HEIGHT/2, SPACE_SHIP_WIDTH, SPACE_SHIP_HEIGHT)
     yellow_player = pygame.Rect(1020, HEIGHT/2, SPACE_SHIP_WIDTH, SPACE_SHIP_HEIGHT)
     
-    bullets = []
+    red_bullets = []
+    yellow_bullets = []
     
     fps_clock = pygame.time.Clock()
     run = True
