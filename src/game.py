@@ -26,7 +26,7 @@ RED_HIT = pygame.USEREVENT+1
 YELLOW_HIT = pygame.USEREVENT+2
 
 #BULLETS 
-BULLETS_VEL = 10
+BULLETS_VEL = 7
 MAX_BULLETS = 3
 
 def draw(yellow_player, red_player, red_bullets, yellow_bullets):
@@ -94,11 +94,11 @@ def run_game():
                 run = False
                 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LCTRL and len(red_bullets) < MAX_BULLETS:
+                if event.key == pygame.K_LSHIFT and len(red_bullets) < MAX_BULLETS:
                     bullet = pygame.Rect(red_player.x + red_player.width, red_player.y + red_player.height//2 -2, 10, 5)
                     red_bullets.append(bullet)
                     
-                if event.key == pygame.K_RCTRL and len(yellow_bullets) < MAX_BULLETS:
+                if event.key == pygame.K_RSHIFT and len(yellow_bullets) < MAX_BULLETS:
                     bullet = pygame.Rect(yellow_player.x - yellow_player.width, yellow_player.y - yellow_player.height//2 -2, 10, 5)
                     yellow_bullets.append(bullet)
                     
@@ -106,8 +106,8 @@ def run_game():
         keys_presed = pygame.key.get_pressed()
         red_handle_movements(keys_presed, red_player)
         yellow_handle_movements(keys_presed, yellow_player)
-              
-        draw(yellow_player, red_player)
+        handle_bullets(yellow_player, red_player, red_bullets, yellow_bullets)
+        draw(yellow_player, red_player, red_bullets, yellow_bullets)
                 
                 
     pygame.quit()
