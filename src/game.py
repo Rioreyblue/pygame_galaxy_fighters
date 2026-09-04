@@ -15,15 +15,19 @@ BORDER = pygame.Rect(WIDTH/2 - 12, 0, 5, HEIGHT)
 #game fps
 FPS = 60
 #player variables
+PLAYER_VEL = 5
 RED_SPACESHIP_IMAGE = pygame.image.load("Assets/spaceship_red.png")
 RED_SPACESHIP = pygame.transform.rotate(pygame.transform.scale(RED_SPACESHIP_IMAGE, (SPACE_SHIP_WIDTH, SPACE_SHIP_HEIGHT)), 90)
-PLAYER_VEL = 5
-#BULLETS 
-BULLETS_VEL = 10
-MAX_BULLETS = 3
 
 YELLOW_SPACESHIP_IMAGE = pygame.image.load("Assets/spaceship_yellow.png")
 YELLOW_SPACESHIP = pygame.transform.rotate(pygame.transform.scale(YELLOW_SPACESHIP_IMAGE, (SPACE_SHIP_WIDTH, SPACE_SHIP_HEIGHT)), 270)
+
+RED_HIT = pygame.USEREVENT+1
+YELLOW_HIT = pygame.USEREVENT+2
+
+#BULLETS 
+BULLETS_VEL = 10
+MAX_BULLETS = 3
 
 def draw(yellow_player, red_player):
     WIN.blit(BG,(0,0))
@@ -56,7 +60,8 @@ def yellow_handle_movements(keys_presed, yellow_player):
 def handle_bullets(red_player, yellow_player, red_bullets, yellow_bullets):
     for bullet in red_bullets:
         bullet.x += BULLETS_VEL
-        if red_player.colliderect(bullet):
+        if yellow_player.colliderect(bullet):
+            pygame.event.post(pygame.event.Event(YELLOW_HIT))
             red_bullets.remove(bullet)
     
 
