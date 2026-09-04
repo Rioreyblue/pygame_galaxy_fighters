@@ -11,7 +11,7 @@ BLUE =(0,255,0)
 GREEN =(0,0,255)
 BLACK = (0,0,0)
 #game border
-BORDER = pygame.Rect(WIDTH/2 - 12, 0, 5, HEIGHT)
+BORDER = pygame.Rect(WIDTH//2 - 12, 0, 5, HEIGHT)
 #game fps
 FPS = 60
 #player variables
@@ -29,10 +29,17 @@ YELLOW_HIT = pygame.USEREVENT+2
 BULLETS_VEL = 10
 MAX_BULLETS = 3
 
-def draw(yellow_player, red_player):
+def draw(yellow_player, red_player, red_bullets, yellow_bullets):
     WIN.blit(BG,(0,0))
     WIN.blit(RED_SPACESHIP,(red_player.x, red_player.y))
     WIN.blit(YELLOW_SPACESHIP,(yellow_player.x, yellow_player.y))
+    
+    for bullet in red_bullets:
+        pygame.draw.rect(WIN, "red", bullet)
+        
+    for bullet in yellow_bullets:
+        pygame.draw.rect(WIN, "yellow", bullet)
+        
     #border
     pygame.draw.rect(WIN, BLACK, BORDER)
     pygame.display.update()
@@ -88,11 +95,11 @@ def run_game():
                 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LCTRL and len(red_bullets) < MAX_BULLETS:
-                    bullet = pygame.Rect(red_player.x + red_player.width, red_player.y + red_player.height/2 -2, 10, 5)
+                    bullet = pygame.Rect(red_player.x + red_player.width, red_player.y + red_player.height//2 -2, 10, 5)
                     red_bullets.append(bullet)
                     
                 if event.key == pygame.K_RCTRL and len(yellow_bullets) < MAX_BULLETS:
-                    bullet = pygame.Rect(yellow_player.x - yellow_player.width, yellow_player.y - yellow_player.height/2 -2, 10, 5)
+                    bullet = pygame.Rect(yellow_player.x - yellow_player.width, yellow_player.y - yellow_player.height//2 -2, 10, 5)
                     yellow_bullets.append(bullet)
                     
         # print(red_bullets)
