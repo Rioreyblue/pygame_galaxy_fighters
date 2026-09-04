@@ -20,6 +20,7 @@ RED_SPACESHIP = pygame.transform.rotate(pygame.transform.scale(RED_SPACESHIP_IMA
 PLAYER_VEL = 5
 #BULLETS 
 BULLETS_VEL = 10
+MAX_BULLETS = 3
 
 YELLOW_SPACESHIP_IMAGE = pygame.image.load("Assets/spaceship_yellow.png")
 YELLOW_SPACESHIP = pygame.transform.rotate(pygame.transform.scale(YELLOW_SPACESHIP_IMAGE, (SPACE_SHIP_WIDTH, SPACE_SHIP_HEIGHT)), 270)
@@ -51,6 +52,12 @@ def yellow_handle_movements(keys_presed, yellow_player):
             yellow_player.y -= PLAYER_VEL
         if keys_presed[pygame.K_DOWN] and yellow_player.y + PLAYER_VEL + SPACE_SHIP_HEIGHT <= HEIGHT-20:
             yellow_player.y += PLAYER_VEL
+
+def handle_bullets(red_player, yellow_player, red_bullets, yellow_bullets):
+    for bullet in red_bullets:
+        bullet.x += BULLETS_VEL
+        if red_player.colliderect(bullet):
+            red_bullets.remove(bullet)
     
 
 def run_game():
@@ -69,13 +76,13 @@ def run_game():
                 run = False
                 
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LCTRL:
+                if event.key == pygame.K_LCTRL and len(red_bullets) < MAX_BULLETS:
                     bullet = pygame.Rect(red_player.x + red_player.width, red_player.y + red_player.height/2 -2, 10, 5)
                     red_bullets.append(bullet)
                     
                 if event.key == pygame.K_RCTRL:
                     ...
-
+        # print(red_bullets)
         keys_presed = pygame.key.get_pressed()
         red_handle_movements(keys_presed, red_player)
         yellow_handle_movements(keys_presed, yellow_player)
