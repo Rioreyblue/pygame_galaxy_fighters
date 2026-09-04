@@ -70,11 +70,15 @@ def handle_bullets(red_player, yellow_player, red_bullets, yellow_bullets):
         if yellow_player.colliderect(bullet):
             pygame.event.post(pygame.event.Event(YELLOW_HIT))
             red_bullets.remove(bullet)
+        elif bullet.x > WIDTH:
+            red_bullets.remove(bullet)
             
     for bullet in yellow_bullets:
         bullet.x -= BULLETS_VEL
         if red_player.colliderect(bullet):
             pygame.event.post(pygame.event.Event(RED_HIT))
+            yellow_bullets.remove(bullet)
+        elif bullet.x < 0:
             yellow_bullets.remove(bullet)
     
 
@@ -106,7 +110,7 @@ def run_game():
         keys_presed = pygame.key.get_pressed()
         red_handle_movements(keys_presed, red_player)
         yellow_handle_movements(keys_presed, yellow_player)
-        handle_bullets(yellow_player, red_player, red_bullets, yellow_bullets)
+        handle_bullets(red_player, yellow_player, red_bullets, yellow_bullets)
         draw(yellow_player, red_player, red_bullets, yellow_bullets)
                 
                 
