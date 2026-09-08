@@ -111,10 +111,10 @@ def run_game():
                     yellow_bullets.append(bullet)
                     
             if event.type == RED_HIT:
-                ...
+                red_health -= 1
                 
             if event.type == YELLOW_HIT:
-                ...
+                yellow_health -= 1
                 
         if red_health <= 0:
             ...
