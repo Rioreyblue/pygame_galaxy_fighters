@@ -113,7 +113,7 @@ def run_game():
                     red_bullets.append(bullet)
                     
                 if event.key == pygame.K_RSHIFT and len(yellow_bullets) < MAX_BULLETS:
-                    bullet = pygame.Rect(yellow_player.x - yellow_player.width, yellow_player.y - yellow_player.height//2 -2, 10, 5)
+                    bullet = pygame.Rect(yellow_player.x, yellow_player.y + yellow_player.height//2 -2, 10, 5)
                     yellow_bullets.append(bullet)
                     
             if event.type == RED_HIT:
