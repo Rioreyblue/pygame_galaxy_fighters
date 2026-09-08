@@ -1,4 +1,5 @@
 import pygame
+pygame.font.init()
 
 WIDTH, HEIGHT = 1080, 720
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -29,10 +30,15 @@ YELLOW_HIT = pygame.USEREVENT+2
 BULLETS_VEL = 7
 MAX_BULLETS = 3
 
-def draw(yellow_player, red_player, red_bullets, yellow_bullets):
+HEALTH_FONT = pygame.font.SysFont('sans-serif', 40)
+def draw(yellow_player, red_player, red_bullets, yellow_bullets, red_health, yellow_health):
     WIN.blit(BG,(0,0))
     WIN.blit(RED_SPACESHIP,(red_player.x, red_player.y))
     WIN.blit(YELLOW_SPACESHIP,(yellow_player.x, yellow_player.y))
+    red_health_text = HEALTH_FONT.render("Health: " + str(red_health),1,"red")
+    yellow_health_text = HEALTH_FONT.render("Health: " + str(yellow_health),1,"yellow")
+    WIN.blit(red_health_text, (10, 10))
+    WIN.blit(yellow_health_text, (WIDTH - yellow_health_text.get_width()- 10, 10))
     
     for bullet in red_bullets:
         pygame.draw.rect(WIN, "red", bullet)
@@ -122,13 +128,16 @@ def run_game():
             
         if yellow_health <= 0:
             winner_text = "Red Wins"
+            
+        if winner_text != "":
+            pass
                     
         # print(red_bullets)
         keys_presed = pygame.key.get_pressed()
         red_handle_movements(keys_presed, red_player)
         yellow_handle_movements(keys_presed, yellow_player)
         handle_bullets(red_player, yellow_player, red_bullets, yellow_bullets)
-        draw(yellow_player, red_player, red_bullets, yellow_bullets)
+        draw(yellow_player, red_player, red_bullets, yellow_bullets, red_health, yellow_health)
                 
                 
     pygame.quit()
