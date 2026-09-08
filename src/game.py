@@ -87,10 +87,14 @@ def run_game():
     yellow_player = pygame.Rect(1020, HEIGHT/2, SPACE_SHIP_WIDTH, SPACE_SHIP_HEIGHT)
     
     red_bullets = []
-    yellow_bullets = []
-    
+    yellow_bullets = []  
     fps_clock = pygame.time.Clock()
     run = True
+    
+    red_health = 10
+    yellow_health = 10
+    
+    
     while run:
         fps_clock.tick(FPS)
         for event in pygame.event.get():
@@ -105,6 +109,18 @@ def run_game():
                 if event.key == pygame.K_RSHIFT and len(yellow_bullets) < MAX_BULLETS:
                     bullet = pygame.Rect(yellow_player.x - yellow_player.width, yellow_player.y - yellow_player.height//2 -2, 10, 5)
                     yellow_bullets.append(bullet)
+                    
+            if event.type == RED_HIT:
+                ...
+                
+            if event.type == YELLOW_HIT:
+                ...
+                
+        if red_health <= 0:
+            ...
+            
+        if yellow_health <= 0:
+            ...
                     
         # print(red_bullets)
         keys_presed = pygame.key.get_pressed()
