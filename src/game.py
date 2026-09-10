@@ -34,7 +34,7 @@ HEALTH_FONT = pygame.font.SysFont('sans-serif', 40)
 WINNER_FONT = pygame.font.SysFont('poppins', 50)
 
 def draw_winner(text):
-    draw_text = WINNER_FONT.render(text,1,GREEN)
+    draw_text = WINNER_FONT.render(text,1,'white')
     WIN.blit(draw_text, (WIDTH/2 - draw_text.get_width()/2, HEIGHT/2 - draw_text.get_height()/2))
     pygame.display.update()
     pygame.time.delay(5000)
@@ -137,7 +137,8 @@ def run_game():
             winner_text = "Red Wins"
             
         if winner_text != "":
-            pass
+            draw_winner(winner_text)
+            break
                     
         # print(red_bullets)
         keys_presed = pygame.key.get_pressed()
