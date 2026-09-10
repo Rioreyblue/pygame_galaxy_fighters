@@ -31,6 +31,8 @@ BULLETS_VEL = 7
 MAX_BULLETS = 3
 
 HEALTH_FONT = pygame.font.SysFont('sans-serif', 40)
+WINNER_FONTM = pygame.font.SysFont('poppins', 50)
+
 def draw(yellow_player, red_player, red_bullets, yellow_bullets, red_health, yellow_health):
     WIN.blit(BG,(0,0))
     WIN.blit(RED_SPACESHIP,(red_player.x, red_player.y))
@@ -86,7 +88,9 @@ def handle_bullets(red_player, yellow_player, red_bullets, yellow_bullets):
             yellow_bullets.remove(bullet)
         elif bullet.x < 0:
             yellow_bullets.remove(bullet)
-    
+
+def draw_winner():
+    ... 
 
 def run_game():
     red_player = pygame.Rect(10, HEIGHT/2, SPACE_SHIP_WIDTH, SPACE_SHIP_HEIGHT)
