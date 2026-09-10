@@ -36,6 +36,8 @@ WINNER_FONT = pygame.font.SysFont('poppins', 50)
 def draw_winner(text):
     draw_text = WINNER_FONT.render(text,1,GREEN)
     WIN.blit(draw_text, (WIDTH/2 - draw_text.get_width()/2, HEIGHT/2 - draw_text.get_height()/2))
+    pygame.display.update()
+    pygame.time.delay(5000)
 
 def draw(yellow_player, red_player, red_bullets, yellow_bullets, red_health, yellow_health):
     WIN.blit(BG,(0,0))
