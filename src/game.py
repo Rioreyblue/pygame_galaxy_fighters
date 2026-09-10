@@ -31,7 +31,7 @@ BULLETS_VEL = 7
 MAX_BULLETS = 3
 
 HEALTH_FONT = pygame.font.SysFont('sans-serif', 40)
-WINNER_FONT = pygame.font.SysFont('poppins', 50)
+WINNER_FONT = pygame.font.SysFont('poppins', 100)
 
 def draw_winner(text):
     draw_text = WINNER_FONT.render(text,1,'white')
