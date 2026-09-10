@@ -113,6 +113,7 @@ def run_game():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+                pygame.quit()
                 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LSHIFT and len(red_bullets) < MAX_BULLETS:
@@ -148,4 +149,4 @@ def run_game():
         draw(yellow_player, red_player, red_bullets, yellow_bullets, red_health, yellow_health)
                 
                 
-    pygame.quit()
+    run_game()
